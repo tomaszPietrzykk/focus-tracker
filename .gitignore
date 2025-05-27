@@ -22,3 +22,35 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# === FRONTEND (Vite / Node.js) ===
+frontend/node_modules
+frontend/dist
+frontend/.env
+frontend/.DS_Store
+
+# === BACKEND (Spring Boot / Maven) ===
+backend/target
+backend/.idea
+backend/.classpath
+backend/.project
+backend/.settings
+backend/.vscode
+backend/.env
+backend/.DS_Store
+
+# === Logs ===
+*.log
+
+# === OS-specific ===
+.DS_Store
+Thumbs.db
+
+# === IDEs ===
+.idea/
+.vscode/
+*.iml
+
+# === Environment Files ===
+.env
+.env.*
