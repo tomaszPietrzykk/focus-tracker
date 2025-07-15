@@ -1,0 +1,50 @@
+/* Timer.module.css */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f0f2f5;
+  font-family: 'Courier New', Courier, monospace;
+  color: #333;
+}
+
+.timer {
+  font-size: 4rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  letter-spacing: 0.15em;
+}
+
+.button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  filter: brightness(0.9);
+}
+
+.start {
+  background-color: #4caf50;
+  color: white;
+}
+
+.stop {
+  background-color: #f44336;
+  color: white;
+}
+
+.reset {
+  background-color: #777;
+  color: white;
+}

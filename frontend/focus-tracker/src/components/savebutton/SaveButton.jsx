@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SaveButton = ({activity, elapsedTimeInSeconds, handleReset}) => {
+const SaveButton = ({activity, elapsedTimeInSeconds, handleReset, updateSummary}) => {
 
     const handleClick = () => {
         alert("Saved")
@@ -10,6 +10,7 @@ const SaveButton = ({activity, elapsedTimeInSeconds, handleReset}) => {
         })
             .then(() => {
                 handleReset()
+                updateSummary()
             })
     }
 

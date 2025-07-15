@@ -3,10 +3,13 @@ import './App.css'
 import ActivitySelector from './components/activity/ActivitySelector.jsx'
 import Timer from './components/timer/Timer';
 import SaveButton from "./components/savebutton/SaveButton.jsx";
+import axios from 'axios';
+import {Button} from "@mui/material";
 
 function App() {
 
     const activities = ["nauka", "gitara", "czytanie"];
+    const [focusSessions, setFocusSessions] = useState([]);
 
     const [isOpen, setIsOpen] = useState(true)
     const [isRunning, setIsRunning] = useState(false);
@@ -17,8 +20,19 @@ function App() {
         setElapsedTimeInSeconds(0);
     };
 
+    const updateSummary = () => {
+        axios.get('http://localhost:8080/api/focus-sessions')
+            .then(response => {
+                setFocusSessions(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching focus sessions:', error);
+            });
+    }
+
     return (
         <>
+            <Button variant="text">Text</Button>
             <div style={{
                 display: "flex",
                 alignItems: "center",
@@ -54,9 +68,15 @@ function App() {
                         activity={activeActivity}
                         elapsedTimeInSeconds={elapsedTimeInSeconds}
                         handleReset={handleReset}
+                        updateSummary={updateSummary}
                     />
                 }
             </div>
+            <ul>
+                {focusSessions.map((session, index) => (
+                    <li key={index}>{session}</li>
+                ))}
+            </ul>
         </>
     )
 }
