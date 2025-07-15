@@ -1,57 +1,70 @@
 import React, {useEffect} from "react";
 import styles from './css/Timer.module.css'
+import {Button} from "@mui/material";
 
-const Timer = ({ setIsOpen, isRunning, setIsRunning, elapsedTimeInSeconds, setElapsedTimeInSeconds, handleReset}) => {
+const Timer = ({setIsOpen, isRunning, setIsRunning, elapsedTimeInSeconds, setElapsedTimeInSeconds, handleReset}) => {
 
-  const handleStart = () => {
-    setIsRunning(true);
-    setIsOpen(false);
-  };
+    const handleStart = () => {
+        setIsRunning(true);
+        setIsOpen(false);
+    };
 
-  const handleStop = () => {
-    setIsRunning(false);
-  };
+    const handleStop = () => {
+        setIsRunning(false);
+    };
 
-  useEffect(() => {
-    if (!isRunning) return;
+    useEffect(() => {
+        if (!isRunning) return;
 
-    const internalId = setInterval(() => {
-      setElapsedTimeInSeconds((prev) => prev + 1);
-    }, 1000);
+        const internalId = setInterval(() => {
+            setElapsedTimeInSeconds((prev) => prev + 1);
+        }, 1000);
 
-    return () => clearInterval(internalId);
-  }, [isRunning, setElapsedTimeInSeconds]);
+        return () => clearInterval(internalId);
+    }, [isRunning, setElapsedTimeInSeconds]);
 
-  const formatTime = (totalSeconds) => {
-    const hours = Math.floor(totalSeconds / 3600);
-    const minutes = Math.floor((totalSeconds % 3600) / 60);
-    const seconds = totalSeconds % 60;
-    return padTime(hours) + ":" + padTime(minutes) + ":" + padTime(seconds);
-  };
+    const formatTime = (totalSeconds) => {
+        const hours = Math.floor(totalSeconds / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        return padTime(hours) + ":" + padTime(minutes) + ":" + padTime(seconds);
+    };
 
-  const padTime = (time) => String(time).padStart(2, "0");
+    const padTime = (time) => String(time).padStart(2, "0");
 
-  return (
-    <div className={styles.container}>
-      <h3>Timer</h3>
-      <p className={styles.timer}>{formatTime(elapsedTimeInSeconds)}</p>
-      {isRunning && (
-        <button className={`${styles.button} ${styles.stop}`} onClick={handleStop}>
-          STOP
-        </button>
-      )}
-      {!isRunning && (
-        <button className={`${styles.button} ${styles.start}`} onClick={handleStart}>
-          START
-        </button>
-      )}
-      {!isRunning && (
-        <button className={`${styles.button} ${styles.reset}`} onClick={handleReset}>
-          RESET
-        </button>
-      )}
-    </div>
-  );
+    return (
+        <div className={styles.container}>
+            <h3>Timer</h3>
+            <p className={styles.timer}>{formatTime(elapsedTimeInSeconds)}</p>
+            {isRunning && (
+                <Button
+                    onClick={handleStop}
+                    variant="outlined"
+                >
+                    STOP
+                </Button>
+            )}
+            {!isRunning && (
+                <Button
+                    onClick={handleStart}
+                    variant="outlined"
+                    sx = {{marginTop: "0.5em", background: "#4caf50", color: "white", border: "none"}}
+                    // todo hover effect can be added
+                >
+                    START
+                </Button>
+            )}
+            {!isRunning && (
+                <Button
+                    sx = {{marginTop: "0.5em", backgroundColor: "#f44336", color: "white", border: "none"}}
+                    onClick={handleReset}
+                    variant="outlined"
+                >
+                    RESET
+                </Button>
+            )}
+        </div>
+    );
 };
 
 export default Timer;
