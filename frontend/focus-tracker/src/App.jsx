@@ -4,7 +4,6 @@ import ActivitySelector from './components/activity/ActivitySelector.jsx'
 import Timer from './components/timer/Timer';
 import SaveButton from "./components/savebutton/SaveButton.jsx";
 import axios from 'axios';
-import {Button} from "@mui/material";
 
 function App() {
 
@@ -32,7 +31,6 @@ function App() {
 
     return (
         <>
-            <Button variant="text">Text</Button>
             <div style={{
                 display: "flex",
                 alignItems: "center",
