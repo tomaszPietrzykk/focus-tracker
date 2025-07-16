@@ -50,7 +50,7 @@ const SaveButton = ({activity, elapsedTimeInSeconds, handleReset, updateSummary}
             )}
             {error && (
                 <Alert
-                    sx={{marginTop: "1em"}}
+                    sx={{marginTop: "1em", marginBottom: "1em"}}
                     severity="error"
                     onClose={() => {
                         setError(false)
