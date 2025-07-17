@@ -4,6 +4,7 @@ import ActivitySelector from './components/activity/ActivitySelector.jsx'
 import Timer from './components/timer/Timer';
 import SaveButton from "./components/savebutton/SaveButton.jsx";
 import axios from 'axios';
+import {Box} from "@mui/material";
 
 function App() {
 
@@ -29,7 +30,11 @@ function App() {
 
     return (
         <>
-            <div>
+            <Box sx={{
+                width: "40%",
+                height: "auto",
+                borderRadius: 1,
+            }}>
                 <ActivitySelector
                     isTimerRunning={isRunning}
                     activities={activities}
@@ -54,12 +59,12 @@ function App() {
                         updateSummary={updateSummary}
                     />
                 }
-            </div>
-            <ul>
-                {focusSessions.map((session, index) => (
-                    <li key={index}>{session}</li>
-                ))}
-            </ul>
+                <ul>
+                    {focusSessions.map((session, index) => (
+                        <li key={index}>{session}</li>
+                    ))}
+                </ul>
+            </Box>
         </>
     )
 }

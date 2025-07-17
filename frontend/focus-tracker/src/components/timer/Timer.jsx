@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import styles from './css/Timer.module.css'
-import {Button} from "@mui/material";
+import {Box, Button} from "@mui/material";
 
 const Timer = ({setIsOpen, isRunning, setIsRunning, elapsedTimeInSeconds, setElapsedTimeInSeconds, handleReset}) => {
 
@@ -33,7 +33,7 @@ const Timer = ({setIsOpen, isRunning, setIsRunning, elapsedTimeInSeconds, setEla
     const padTime = (time) => String(time).padStart(2, "0");
 
     return (
-        <div className={styles.container}>
+        <Box className={styles.container}>
             <h3>Timer</h3>
             <p className={styles.timer}>{formatTime(elapsedTimeInSeconds)}</p>
             {isRunning && (
@@ -63,7 +63,7 @@ const Timer = ({setIsOpen, isRunning, setIsRunning, elapsedTimeInSeconds, setEla
                     RESET
                 </Button>
             )}
-        </div>
+        </Box>
     );
 };
 

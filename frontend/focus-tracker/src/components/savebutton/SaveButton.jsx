@@ -31,7 +31,7 @@ const SaveButton = ({activity, elapsedTimeInSeconds, handleReset, updateSummary}
     return (
         <>
             <Button
-                sx={{marginTop: "1em"}}
+                sx={{marginTop: "1em", width: "100%"}}
                 variant="contained"
                 loading={isSending}
                 onClick={handleClick}
