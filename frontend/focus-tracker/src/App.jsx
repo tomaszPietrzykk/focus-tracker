@@ -5,7 +5,7 @@ import Timer from './components/timer/Timer';
 import SaveButton from "./components/savebutton/SaveButton.jsx";
 import axios from 'axios';
 import {Box} from "@mui/material";
-import { formatTime } from './components/utils/TimeUtils.jsx';
+import SessionDisplay from "./components/session/SessionDisplay.jsx";
 
 function App() {
 
@@ -60,13 +60,7 @@ function App() {
                         updateSummary={updateSummary}
                     />
                 }
-                <ul>
-                    {focusSessions.map((session, index) => (
-                        <li key={index}>
-                            {session.activityName} &ndash; {formatTime(session.durationInSeconds)} sek.
-                        </li>
-                    ))}
-                </ul>
+                <SessionDisplay focusSessions={focusSessions}/>
             </Box>
         </>
     )
