@@ -10,14 +10,14 @@ import java.util.List;
 @RequiredArgsConstructor
 class FocusSessionRepository {
 
-    private static final List<String> focusSessions = new ArrayList<>();
+    private static final List<FocusSessionEntity> focusSessions = new ArrayList<>();
 
-    public List<String> findAllFocusSessions() {
+    public List<FocusSessionEntity> findAllFocusSessions() {
         return focusSessions;
     }
 
-    public void saveFocusSession(String focusSession) {
-        focusSessions.add(focusSession);
+    public void saveFocusSession(FocusSessionEntity focusSessionEntities) {
+        focusSessions.add(focusSessionEntities);
     }
 
 

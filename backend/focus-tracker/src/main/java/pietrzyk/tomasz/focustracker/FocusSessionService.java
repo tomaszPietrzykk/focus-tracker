@@ -11,12 +11,15 @@ class FocusSessionService {
 
     private final FocusSessionRepository focusSessionRepository;
 
-    public void createFocusSession(FocusSessionRequest request) {
-        focusSessionRepository.saveFocusSession(request.activityName());
+    public void createFocusSession(FocusSessionDto request) {
+        var focusSessionEntity = new FocusSessionEntity(request.activityName(), request.durationInSeconds());
+        focusSessionRepository.saveFocusSession(focusSessionEntity);
     }
 
-    public List<String> findAllFocusSessions() {
-        return focusSessionRepository.findAllFocusSessions();
+    public List<FocusSessionDto> findAllFocusSessions() {
+        return focusSessionRepository.findAllFocusSessions().stream()
+                .map(entity -> new FocusSessionDto(entity.getActivityName(), entity.getDurationInSeconds()))
+                .toList();
     }
 
 }

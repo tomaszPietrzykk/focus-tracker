@@ -5,13 +5,14 @@ import Timer from './components/timer/Timer';
 import SaveButton from "./components/savebutton/SaveButton.jsx";
 import axios from 'axios';
 import {Box} from "@mui/material";
+import { formatTime } from './components/utils/TimeUtils.jsx';
 
 function App() {
 
     const activities = ["nauka", "gitara", "czytanie"];
     const [focusSessions, setFocusSessions] = useState([]);
     const [isRunning, setIsRunning] = useState(false);
-    const [elapsedTimeInSeconds, setElapsedTimeInSeconds] = useState(0);
+    const [elapsedTimeInSeconds, setElapsedTimeInSeconds] = useState(59);
     const [activeActivity, setActiveActivity] = useState(activities[0])
 
     const handleReset = () => {
@@ -61,7 +62,9 @@ function App() {
                 }
                 <ul>
                     {focusSessions.map((session, index) => (
-                        <li key={index}>{session}</li>
+                        <li key={index}>
+                            {session.activityName} &ndash; {formatTime(session.durationInSeconds)} sek.
+                        </li>
                     ))}
                 </ul>
             </Box>

@@ -15,13 +15,13 @@ class FocusSessionController {
     private final FocusSessionService focusSessionService;
 
     @PostMapping
-    public ResponseEntity<Void> createFocusSession(@RequestBody @Valid FocusSessionRequest request) {
+    public ResponseEntity<Void> createFocusSession(@RequestBody @Valid FocusSessionDto request) {
         focusSessionService.createFocusSession(request);
         return ResponseEntity.ok().build();
     }
 
     @GetMapping
-    public ResponseEntity<List<String>> getFocusSessions() {
+    public ResponseEntity<List<FocusSessionDto>> getFocusSessions() {
         return ResponseEntity.ok(focusSessionService.findAllFocusSessions());
     }
 
