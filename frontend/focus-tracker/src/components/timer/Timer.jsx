@@ -3,11 +3,10 @@ import styles from './css/Timer.module.css'
 import {Box, Button} from "@mui/material";
 import { formatTime } from '../utils/timeUtils';
 
-const Timer = ({setIsOpen, isRunning, setIsRunning, elapsedTimeInSeconds, setElapsedTimeInSeconds, handleReset}) => {
+const Timer = ({isRunning, setIsRunning, elapsedTimeInSeconds, setElapsedTimeInSeconds, handleReset}) => {
 
     const handleStart = () => {
         setIsRunning(true);
-        setIsOpen(false);
     };
 
     const handleStop = () => {

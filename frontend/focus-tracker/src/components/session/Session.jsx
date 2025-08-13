@@ -1,10 +1,11 @@
 import {formatTime} from "../utils/TimeUtils.jsx";
+import ListItemText from "@mui/material/ListItemText";
 
 const Session = ({activityName, durationInSeconds}) => {
 
     return (
         <>
-            {activityName} &ndash; {formatTime(durationInSeconds)} sek.
+            <ListItemText primary={`${activityName} ${formatTime(durationInSeconds)}`} />
         </>
     )
 
