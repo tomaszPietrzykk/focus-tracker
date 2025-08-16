@@ -19,6 +19,15 @@ function App() {
         setElapsedTimeInSeconds(0);
     };
 
+    const handleSessionDeletion = (sessionUuid) => {
+        axios.delete(`http://localhost:8080/api/focus-sessions/${sessionUuid}`)
+            .then(() => updateSummary())
+            .catch(error => {
+                console.error('Error deleting focus session:', error);
+            });
+    };
+
+
     const updateSummary = () => {
         axios.get('http://localhost:8080/api/focus-sessions')
             .then(response => {
@@ -60,7 +69,10 @@ function App() {
                         updateSummary={updateSummary}
                     />
                 }
-                <SessionDisplay focusSessions={focusSessions}/>
+                <SessionDisplay
+                    focusSessions={focusSessions}
+                    handleSessionDelete={handleSessionDeletion}
+                />
             </Box>
         </>
     )

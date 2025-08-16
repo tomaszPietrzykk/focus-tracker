@@ -12,6 +12,7 @@ const SaveButton = ({activity, elapsedTimeInSeconds, handleReset, updateSummary}
         setError(false)
         setIsSending(true)
         axios.post('http://localhost:8080/api/focus-sessions', {
+            uuid: crypto.randomUUID(),
             activityName: activity,
             durationInSeconds: elapsedTimeInSeconds
         })

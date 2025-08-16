@@ -1,24 +1,33 @@
 package pietrzyk.tomasz.focustracker;
 
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor
 class FocusSessionService {
 
     private final FocusSessionRepository focusSessionRepository;
+    private final FocusSessionMapper focusSessionMapper;
 
-    public void createFocusSession(FocusSessionDto request) {
-        var focusSessionEntity = new FocusSessionEntity(request.activityName(), request.durationInSeconds());
+    FocusSessionService(@Autowired FocusSessionRepository focusSessionRepository) {
+        this.focusSessionRepository = focusSessionRepository;
+        this.focusSessionMapper = new FocusSessionMapper();
+    }
+
+    void createFocusSession(FocusSessionDto request) {
+        var focusSessionEntity = focusSessionMapper.toEntity(request);
         focusSessionRepository.saveFocusSession(focusSessionEntity);
     }
 
-    public List<FocusSessionDto> findAllFocusSessions() {
+    void deleteFocusSession(String uuid) {
+        focusSessionRepository.deleteFocusSession(uuid);
+    }
+
+    List<FocusSessionDto> findAllFocusSessions() {
         return focusSessionRepository.findAllFocusSessions().stream()
-                .map(entity -> new FocusSessionDto(entity.getActivityName(), entity.getDurationInSeconds()))
+                .map(focusSessionMapper::toDto)
                 .toList();
     }
 

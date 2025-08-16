@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
 record FocusSessionDto(
+        @NotNull @NotBlank String uuid,
         @NotBlank String activityName,
         @NotNull @Positive Long durationInSeconds) {
 }

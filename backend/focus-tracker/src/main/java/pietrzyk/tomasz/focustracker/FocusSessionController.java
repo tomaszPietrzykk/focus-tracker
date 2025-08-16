@@ -20,6 +20,12 @@ class FocusSessionController {
         return ResponseEntity.ok().build();
     }
 
+    @DeleteMapping("/{uuid}")
+    public ResponseEntity<Void> deleteSession(@PathVariable String uuid) {
+        focusSessionService.deleteFocusSession(uuid);
+        return ResponseEntity.noContent().build();
+    }
+
     @GetMapping
     public ResponseEntity<List<FocusSessionDto>> getFocusSessions() {
         return ResponseEntity.ok(focusSessionService.findAllFocusSessions());

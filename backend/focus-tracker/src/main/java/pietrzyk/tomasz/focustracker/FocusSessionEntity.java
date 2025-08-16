@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 class FocusSessionEntity {
 
+    private final String uuid;
     private final String activityName;
     private final Long durationInSeconds;
 

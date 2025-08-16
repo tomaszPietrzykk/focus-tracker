@@ -8,7 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const SessionDisplay = ({focusSessions}) => {
+const SessionDisplay = ({focusSessions, handleSessionDelete}) => {
 
 
     const [checked, setChecked] = React.useState([0]);
@@ -36,7 +36,7 @@ const SessionDisplay = ({focusSessions}) => {
                         key={index}
                         secondaryAction={
                             <IconButton edge="end" aria-label="comments">
-                                <DeleteIcon />
+                                <DeleteIcon onClick={() => handleSessionDelete(value.uuid)}/>
                             </IconButton>
                         }
                         disablePadding
@@ -51,25 +51,16 @@ const SessionDisplay = ({focusSessions}) => {
                                     inputProps={{ 'aria-labelledby': labelId }}
                                 />
                             </ListItemIcon>
-                            <Session activityName = {value.activityName} durationInSeconds={value.durationInSeconds}/>
+                            <Session
+                                activityName = {value.activityName}
+                                durationInSeconds={value.durationInSeconds}
+                            />
                         </ListItemButton>
                     </ListItem>
                 );
             })}
         </List>
     );
-
-    // return (
-    //     <>
-    //         <ul>
-    //             {focusSessions.map((session, index) => (
-    //                 <li key={index}>
-    //                     <Session activityName = {session.activityName} durationInSeconds={session.durationInSeconds}/>
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     </>
-    // )
 
 }
 
