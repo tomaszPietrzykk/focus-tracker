@@ -1,6 +1,13 @@
 import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemIcon from "@mui/material/ListItemIcon";
 
 const ActivityList = ({activities, onSelect, activeActivity, isTimerRunning}) => {
+
+    const onDelete = (category) => {
+        console.log("Deleting category:", category);
+    }
 
     return (
         <>
@@ -14,11 +21,28 @@ const ActivityList = ({activities, onSelect, activeActivity, isTimerRunning}) =>
                 >
                     {activities.map((category) => (
                         <MenuItem
+                            key={category}
                             value={category}
+                            sx={{display: "flex", justifyContent: "space-between", alignItems: "center"}}
                         >
-                            {category}
+                            <ListItemText>{category}</ListItemText>
+                            <ListItemIcon
+                                size="small"
+                                edge="end"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onDelete(category);
+                                }}
+                            >
+                                <DeleteIcon fontSize="small"/>
+                            </ListItemIcon>
                         </MenuItem>
                     ))}
+                    <MenuItem
+                        value={"+"}
+                    >
+                        +
+                    </MenuItem>
                 </Select>
             </FormControl>
 
