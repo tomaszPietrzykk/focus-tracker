@@ -3,10 +3,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
 
-const ActivityList = ({activities, onSelect, activeActivity, isTimerRunning}) => {
+const ActivityList = ({activities, setActivitiesList, onSelect, activeActivity, isTimerRunning}) => {
 
-    const onDelete = (category) => {
-        console.log("Deleting category:", category);
+    const onDelete = (activity) => {
+        console.log("Deleting activity:", activity);
+        setActivitiesList((prevActivities) => prevActivities.filter((item) => item !== activity));
     }
 
     return (

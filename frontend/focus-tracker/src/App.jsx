@@ -9,7 +9,7 @@ import SessionDisplay from "./components/session/SessionDisplay.jsx";
 
 function App() {
 
-    const activities = ["nauka", "gitara", "czytanie"];
+    const [activities, setActivitiesList] = useState(["nauka", "gitara", "czytanie"]);
     const [focusSessions, setFocusSessions] = useState([]);
     const [isRunning, setIsRunning] = useState(false);
     const [elapsedTimeInSeconds, setElapsedTimeInSeconds] = useState(59);
@@ -48,6 +48,7 @@ function App() {
                 <ActivitySelector
                     isTimerRunning={isRunning}
                     activities={activities}
+                    setActivitiesList={setActivitiesList}
                     activeActivity={activeActivity}
                     setActiveActivity={setActiveActivity}
                     handleReset={handleReset}

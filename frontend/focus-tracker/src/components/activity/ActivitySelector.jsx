@@ -2,6 +2,7 @@ import ActivityList from "./ActivityList.jsx"
 
 const ActivitySelector = ({
                               activities,
+                              setActivitiesList,
                               isTimerRunning,
                               activeActivity,
                               setActiveActivity,
@@ -19,6 +20,7 @@ const ActivitySelector = ({
             <div>
                 <ActivityList
                     isTimerRunning={isTimerRunning}
+                    setActivitiesList={setActivitiesList}
                     activities={activities}
                     onSelect={handleSelect}
                     activeActivity={activeActivity}
