@@ -10,7 +10,6 @@ const ActivitySelector = ({
                           }) => {
 
     const handleSelect = (event) => {
-        console.log(event)
         setActiveActivity(event.target.value)
         handleReset()
     }

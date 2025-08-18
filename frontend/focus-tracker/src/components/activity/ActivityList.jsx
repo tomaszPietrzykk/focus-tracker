@@ -19,6 +19,7 @@ const ActivityList = ({activities, setActivitiesList, onSelect, activeActivity, 
                     id="demo-simple-select"
                     value={activeActivity}
                     onChange={onSelect}
+                    renderValue={(value) => value}
                 >
                     {activities.map((category) => (
                         <MenuItem
