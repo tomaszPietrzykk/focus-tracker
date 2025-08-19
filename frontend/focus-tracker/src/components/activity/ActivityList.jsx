@@ -1,5 +1,6 @@
-import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
+import {Button, FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import AddIcon from '@mui/icons-material/Add';
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
 
@@ -11,15 +12,16 @@ const ActivityList = ({activities, setActivitiesList, onSelect, activeActivity, 
     }
 
     return (
-        <>
-            <FormControl fullWidth disabled={isTimerRunning}>
+        <div style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+            <FormControl fullWidth disabled={isTimerRunning || activities.length === 0}>
                 <InputLabel id="demo-simple-select-label"/>
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={activeActivity}
                     onChange={onSelect}
-                    renderValue={(value) => value}
+                    renderValue={(value) => activities.length === 0 ? "No activities" : value}
+                    disbled={activities.length === 0}
                 >
                     {activities.map((category) => (
                         <MenuItem
@@ -40,15 +42,10 @@ const ActivityList = ({activities, setActivitiesList, onSelect, activeActivity, 
                             </ListItemIcon>
                         </MenuItem>
                     ))}
-                    <MenuItem
-                        value={"+"}
-                    >
-                        +
-                    </MenuItem>
                 </Select>
             </FormControl>
-
-        </>
+            <Button><AddIcon fontSize={"medium"}/></Button>
+        </div>
     )
 }
 
