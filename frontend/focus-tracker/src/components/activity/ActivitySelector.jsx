@@ -1,4 +1,6 @@
 import ActivityList from "./ActivityList.jsx"
+import AddActivityButton from "./AddActivityButton.jsx";
+
 
 const ActivitySelector = ({
                               activities,
@@ -15,16 +17,16 @@ const ActivitySelector = ({
     }
 
     return (
-        <div>
-            <div>
-                <ActivityList
-                    isTimerRunning={isTimerRunning}
-                    setActivitiesList={setActivitiesList}
-                    activities={activities}
-                    onSelect={handleSelect}
-                    activeActivity={activeActivity}
-                />
-            </div>
+
+        <div style={{display: "flex", width: "100%"}}>
+            <ActivityList
+                isTimerRunning={isTimerRunning}
+                setActivitiesList={setActivitiesList}
+                activities={activities}
+                onSelect={handleSelect}
+                activeActivity={activeActivity}
+            />
+            <AddActivityButton />
         </div>
     )
 }
